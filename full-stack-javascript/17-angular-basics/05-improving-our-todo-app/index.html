@@ -13,6 +13,7 @@
 	</div>
 	<div class="item" ng-class="{'editing-item': editing, 'edited': todo.edited}" ng-repeat="todo in todos">
 		<input ng-model="todo.completed" type="checkbox"/>
+		<span ng-click="todo.completed = !todo.completed"></span>
 		<!-- label used to display value of todo -->
 		<label ng-hide="editing" ng-click="helloWorld()">{{todo.name}}</label>
 		<!-- input used to change value of todo -->
