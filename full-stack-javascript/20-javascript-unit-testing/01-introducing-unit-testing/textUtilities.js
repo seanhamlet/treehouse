@@ -7,7 +7,6 @@ function titleCase(title) {
     return word[0].toUpperCase() + word.substring(1);
   });
   return titleCasedWords.join(' ');
-
 }
 
 expect(titleCase('the great mouse detective')).to.be.a('string');
