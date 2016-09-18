@@ -5,6 +5,7 @@ describe('checkForShip', function() {
 
   var player;
 
+  // Set up a single player object to be used with all checkForShip tests
   before(function() {
     player = {
       ships: [
