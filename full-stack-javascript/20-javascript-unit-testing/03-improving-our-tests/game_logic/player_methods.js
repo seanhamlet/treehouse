@@ -22,7 +22,6 @@ function validateLocations (player, locations) {
 
 function placeShip (player, ship, startingCoordinates, direction) {
   if (!direction) {throw Error('You left out the direction! I need that for math!')};
-
   var proposedLocations = [];
   var previousLocation,
     rowNumber,
@@ -47,8 +46,28 @@ function placeShip (player, ship, startingCoordinates, direction) {
   }
 }
 
+function computerFire (player) {
+  var x = Math.floor(Math.random() * 9);
+  var y = Math.floor(Math.random() * 9);
+  var coordinates = [x, y];
+
+  fire(player, coordinates);
+}
+
+function computerPlaceShip (player, ship) {
+  var direction = Math.random() > 0.5
+    ? 'horizontal'
+    : 'vertical';
+  var x = Math.floor(Math.random() * 9);
+  var y = Math.floor(Math.random() * 9);
+  var coordinates = [x, y];
+  placeShip(player, ship, coordinates, direction);
+}
+
 module.exports = {
   placeShip: placeShip,
   validateLocations: validateLocations,
   validateLocation: validateLocation,
+  computerPlaceShip: computerPlaceShip,
+  computerFire: computerFire
 };
