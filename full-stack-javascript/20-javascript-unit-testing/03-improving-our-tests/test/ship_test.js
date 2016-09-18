@@ -65,9 +65,11 @@ describe('damageShip', function() {
 
 describe('fire', function() {
   var fire = require('../game_logic/ship_methods').fire;
+  var player;
 
-  it("should record damage on the given player's ship at a given coordinate", function() {
-    var player = {
+  // Setup player object to be reset to this state before EACH test run
+  beforeEach(function() {
+    player = {
       ships: [
         {
         locations: [[0, 0]],
@@ -75,24 +77,15 @@ describe('fire', function() {
         }
       ]
     };
+  });
 
+  it("should record damage on the given player's ship at a given coordinate", function() {
     fire(player, [0, 0]);
-
     expect(player.ships[0].damage[0]).to.deep.equal([0, 0]);
   });
 
   it("should not record damage if there is no ship at my coordintes", function() {
-    var player = {
-      ships: [
-        {
-        locations: [[0, 0]],
-        damage: []
-        }
-      ]
-    };
-
     fire(player, [9, 9]);
-
     expect(player.ships[0].damage[0]).to.be.empty;
   });
 });
