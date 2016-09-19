@@ -18,7 +18,27 @@ describe('GAME INSTANCE FUNCTIONS', function() {
       expect(actual).to.be.false;
     });
   });
-  it('some other stuff');
-  //removing the call back function makes the test pending
-  //placing an 'x' in front of 'describe' or 'it' will make that test pending even if it does have a callback function
+
+  describe('takeTurn', function() {
+    var takeTurn = require('../game_logic/game_instance.js').takeTurn;
+    var guess, player;
+
+    beforeEach(function() {
+      guess = function () {return [0, 0]; };
+      player = {
+        ships: [
+          {
+            locations: [[0, 0]],
+            damage: []
+          }
+        ]
+      };
+    });
+
+    it('should return false if the game ends', function() {
+      var actual = takeTurn(player, guess);
+      expect(actual).to.be.false;
+    });
+  });
+
 });
